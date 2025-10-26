@@ -11,3 +11,21 @@ __pycache__/
 # OS
 .DS_Store
 Thumbs.db
+
+# Python virtual environments
+venv/
+.venv/
+
+# Mac system files
+.DS_Store
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Other common ignores
+*.log
+*.pot
+*.pyc
+*.pyo
