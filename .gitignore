@@ -1,0 +1,13 @@
+# Virtual Env
+venv/
+env/
+*.pyc
+__pycache__/
+.DS_Store
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
