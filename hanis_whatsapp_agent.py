@@ -1,17 +1,25 @@
 
 # Hanis WhatsApp Smart Agent - Flask Backend
-# Dependencies: flask, requests, openai
+# Dependencies: flask, requests, openai, python-dotenv
 
 from flask import Flask, request, jsonify
 import requests
 import openai
+import os
+from dotenv import load_dotenv
+
+load_dotenv()  # Load environment variables from .env file
 
 app = Flask(__name__)
 
 # CONFIGURATION
-ULTRAMSG_INSTANCE_ID = "your_ultramsg_instance_id"
-ULTRAMSG_TOKEN = "your_ultramsg_token"
-OPENAI_API_KEY = "your_openai_api_key"
+ULTRAMSG_INSTANCE_ID = os.getenv("ULTRAMSG_INSTANCE_ID")
+ULTRAMSG_TOKEN = os.getenv("ULTRAMSG_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+
+# Validate that all required environment variables are set
+if not all([ULTRAMSG_INSTANCE_ID, ULTRAMSG_TOKEN, OPENAI_API_KEY]):
+    raise ValueError("Missing one or more required environment variables: ULTRAMSG_INSTANCE_ID, ULTRAMSG_TOKEN, OPENAI_API_KEY")
 
 openai.api_key = OPENAI_API_KEY
 
