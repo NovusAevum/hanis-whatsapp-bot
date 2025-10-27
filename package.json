@@ -1,0 +1,25 @@
+{
+  "name": "hanis-whatsapp-bot",
+  "version": "0.1.0",
+  "private": true,
+  "main": "dist/index.js",
+  "type": "commonjs",
+  "scripts": {
+    "dev": "nodemon --watch src --exec \"node -r dotenv/config ./src/index.js\"",
+    "start": "node -r dotenv/config ./dist/index.js",
+    "build": "echo \"No build step defined\" && exit 0",
+    "lint": "eslint \"src/**\" --fix || true",
+    "test": "echo \"No tests defined\" && exit 0",
+    "diagnose": "bash ./scripts/diagnose.sh"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.0",
+    "eslint": "^8.0.0"
+  }
+}
