@@ -1,8 +1,8 @@
-# Hanis WhatsApp Smart Agent
+# Hanis WhatsApp Smart Agent (Node.js)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An intelligent, persona-driven WhatsApp bot that uses OpenAI's GPT-4 to generate context-aware and professional automatic replies. This bot is designed to be easily deployed and configured, making it a powerful tool for managing your WhatsApp communications.
+An intelligent, persona-driven WhatsApp bot that uses OpenAI's GPT-4 to generate context-aware and professional automatic replies. This bot is built with Node.js and Express, and it's designed to be easily deployed and configured.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ An intelligent, persona-driven WhatsApp bot that uses OpenAI's GPT-4 to generate
 
 ## Overview
 
-The Hanis WhatsApp Smart Agent is a Flask-based backend that integrates with the UltraMsg API to send and receive WhatsApp messages. It uses OpenAI's GPT-4 to analyze incoming messages, classify their intent, and generate intelligent, context-aware replies based on a predefined persona.
+The Hanis WhatsApp Smart Agent is a Node.js-based backend that integrates with the UltraMsg API to send and receive WhatsApp messages. It uses OpenAI's GPT-4 to analyze incoming messages, classify their intent, and generate intelligent, context-aware replies based on a predefined persona.
 
 ## Features
 
@@ -29,12 +29,12 @@ The Hanis WhatsApp Smart Agent is a Flask-based backend that integrates with the
 
 ## Architecture
 
-The bot's architecture is simple and straightforward. It consists of a Flask web server that exposes a webhook endpoint. When a new message is received, the webhook is triggered, and the bot's logic is executed.
+The bot's architecture is simple and straightforward. It consists of an Express web server that exposes a webhook endpoint. When a new message is received, the webhook is triggered, and the bot's logic is executed.
 
 ```mermaid
 graph TD;
     A[WhatsApp User] -->|Sends Message| B(UltraMsg API);
-    B -->|POST Request| C{Flask Webhook};
+    B -->|POST Request| C{Express Webhook};
     C -->|Process Message| D[Intent Classifier];
     D -->|Generate Response| E{OpenAI GPT-4};
     E -->|Formatted Reply| C;
@@ -46,7 +46,7 @@ graph TD;
 
 Before you can run the bot, you need to make sure you have the following:
 
-- Python 3.7 or higher
+- Node.js (v16 or higher)
 - An UltraMsg account with an active instance
 - An OpenAI API key
 
@@ -59,20 +59,13 @@ Before you can run the bot, you need to make sure you have the following:
    cd hanis-whatsapp-bot
    ```
 
-2. **Create a virtual environment:**
+2. **Install the dependencies:**
 
    ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+   npm install
    ```
 
-3. **Install the dependencies:**
-
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Configure the environment variables:**
+3. **Configure the environment variables:**
 
    Create a `.env` file in the root of the project and add the following, replacing the placeholder values with your actual credentials:
 
@@ -83,17 +76,26 @@ Before you can run the bot, you need to make sure you have the following:
 
    # OpenAI API Key
    OPENAI_API_KEY="your_openai_api_key"
+
+   # Server Port
+   PORT=3000
    ```
 
 ## Usage
 
-To start the bot, simply run the following command:
+To start the bot in development mode, run the following command:
 
 ```bash
-python hanis_whatsapp_agent.py
+npm run dev
 ```
 
-The bot will start a Flask development server and will be ready to receive messages. You will need to configure your UltraMsg webhook to point to the correct URL.
+To start the bot in production mode, run the following command:
+
+```bash
+npm start
+```
+
+The bot will start an Express server and will be ready to receive messages. You will need to configure your UltraMsg webhook to point to the correct URL.
 
 ## Contributing
 
@@ -101,4 +103,4 @@ Contributions are welcome! If you have any ideas, suggestions, or bug reports, p
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License.
