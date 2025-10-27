@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An intelligent, persona-driven WhatsApp bot that uses OpenAI's GPT-4 to generate context-aware and professional automatic replies. This bot is built with Node.js and Express, and it's designed to be easily deployed and configured.
+An intelligent, persona-driven WhatsApp bot that uses Mistral AI to generate context-aware and professional automatic replies. This bot is built with Node.js and Express, and it's designed to be easily deployed and configured.
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@ An intelligent, persona-driven WhatsApp bot that uses OpenAI's GPT-4 to generate
 
 ## Overview
 
-The Hanis WhatsApp Smart Agent is a Node.js-based backend that integrates with the UltraMsg API to send and receive WhatsApp messages. It uses OpenAI's GPT-4 to analyze incoming messages, classify their intent, and generate intelligent, context-aware replies based on a predefined persona.
+The Hanis WhatsApp Smart Agent is a Node.js-based backend that integrates with the UltraMsg API to send and receive WhatsApp messages. It uses Mistral AI to analyze incoming messages, classify their intent, and generate intelligent, context-aware replies based on a predefined persona.
 
 ## Features
 
@@ -36,7 +36,7 @@ graph TD;
     A[WhatsApp User] -->|Sends Message| B(UltraMsg API);
     B -->|POST Request| C{Express Webhook};
     C -->|Process Message| D[Intent Classifier];
-    D -->|Generate Response| E{OpenAI GPT-4};
+    D -->|Generate Response| E{Mistral AI};
     E -->|Formatted Reply| C;
     C -->|Send Reply| B;
     B -->|Delivers Message| A;
@@ -48,7 +48,7 @@ Before you can run the bot, you need to make sure you have the following:
 
 - Node.js (v16 or higher)
 - An UltraMsg account with an active instance
-- An OpenAI API key
+- A Mistral AI API key
 
 ## Installation
 
@@ -74,8 +74,8 @@ Before you can run the bot, you need to make sure you have the following:
    ULTRAMSG_INSTANCE_ID="your_ultramsg_instance_id"
    ULTRAMSG_TOKEN="your_ultramsg_token"
 
-   # OpenAI API Key
-   OPENAI_API_KEY="your_openai_api_key"
+   # Mistral AI API Key
+   MISTRAL_API_KEY="your_mistral_api_key"
 
    # Server Port
    PORT=3000

@@ -6,9 +6,9 @@ require('dotenv').config();
 const app = express();
 app.use(bodyParser.json());
 
-const { ULTRAMSG_INSTANCE_ID, ULTRAMSG_TOKEN, OPENAI_API_KEY } = process.env;
+const { ULTRAMSG_INSTANCE_ID, ULTRAMSG_TOKEN, MISTRAL_API_KEY } = process.env;
 
-if (!ULTRAMSG_INSTANCE_ID || !ULTRAMSG_TOKEN || !OPENAI_API_KEY) {
+if (!ULTRAMSG_INSTANCE_ID || !ULTRAMSG_TOKEN || !MISTRAL_API_KEY) {
   console.error('Missing one or more required environment variables.');
   process.exit(1);
 }
@@ -36,20 +36,20 @@ function classifyIntent(msg) {
 async function generateResponse(userMessage) {
   const intent = classifyIntent(userMessage);
   try {
-    const response = await axios.post('https://api.openai.com/v1/chat/completions', {
-      model: 'gpt-4',
+    const response = await axios.post('https://api.mistral.ai/v1/chat/completions', {
+      model: 'mistral-tiny',
       messages: [
         { role: 'system', content: HANIS_PERSONA_PROMPT },
         { role: 'user', content: `Incoming message (intent: ${intent}): ${userMessage}` }
       ]
     }, {
       headers: {
-        'Authorization': `Bearer ${OPENAI_API_KEY}`
+        'Authorization': `Bearer ${MISTRAL_API_KEY}`
       }
     });
     return response.data.choices[0].message.content.trim();
   } catch (error) {
-    console.error('Error generating response from OpenAI:', error);
+    console.error('Error generating response from Mistral AI:', error);
     return 'Sorry, I am unable to respond at the moment.';
   }
 }
