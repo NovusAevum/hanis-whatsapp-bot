@@ -5,13 +5,14 @@
 from flask import Flask, request, jsonify
 import requests
 import openai
+import os
 
 app = Flask(__name__)
 
 # CONFIGURATION
-ULTRAMSG_INSTANCE_ID = "your_ultramsg_instance_id"
-ULTRAMSG_TOKEN = "your_ultramsg_token"
-OPENAI_API_KEY = "your_openai_api_key"
+ULTRAMSG_INSTANCE_ID = os.getenv("ULTRAMSG_INSTANCE_ID")
+ULTRAMSG_TOKEN = os.getenv("ULTRAMSG_TOKEN")
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 openai.api_key = OPENAI_API_KEY
 
